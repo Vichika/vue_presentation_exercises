@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter Social Media List Exercise Part 2</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app" class="columns">
+        <nav class="panel column is-4 is-offset-4 has-text-centered">
+            <p class="panel-heading">
+                Social Media
+            </p>
+            <div class="panel-block">
+                <p class="control has-icons-left">
+                    <input class="input is-small" type="text" placeholder="Search" v-model='search'>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </p>
+            </div>
+            <a class="panel-block" v-bind:href="socialMedia.link" target="_blank" v-for="socialMedia in filteredList">
+                    <span class="panel-icon">
+                        <i class="fa" v-bind:class="'fa-'+socialMedia.name"></i>
+                    </span>
+                        <!-- Implement a filter pipe to capitalize the name, define method in the Vue instance -->
+                        {{ socialMedia.name }}
+                    <span class="panel-icon">
+                        <!-- Add click handler on <i> tag to remove item -->
+                        <i class="fa fa-times"></i>
+                    </span>
+            </a>
+        </nav>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const app = new Vue({
+            data: {
+                search: '',
+                socialMediaList: [{
+                        name: "linkedin",
+                        link: "https://www.linkedin.com"
+                    },
+
+                    {
+                        name: "hacker-news",
+                        link: "https://news.ycombinator.com/"
+                    },
+                    {
+                        name: "meetup",
+                        link: "https://www.meetup.com/"
+                    },
+                    {
+                        name: "quora",
+                        link: "https://www.quora.com/"
+                    },
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/"
+                    },
+                    {
+                        name: "twitter",
+                        link: "https://twitter.com"
+                    },
+                    {
+                        name: "reddit",
+                        link: "https://www.reddit.com"
+                    }
+                ]
+            },
+            computed: {
+                filteredList() {
+                    const self = this;
+                    return self.socialMediaList.filter(function (sm) {
+                        return sm.name.indexOf(self.search.toLowerCase()) > -1;
+                    });
+                }
+            }
+            // Add a methods option and define a method to remove the item when the 'X' is clicked
+            // Add a filters option and define a method in your that capitalizes the first character in a string value
+            // Add an appropriate lifecyclehook to focus the search input when page loads and displays the element
+           
+        }).$mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+    height: 100vh;
+}
+
+#app {
+    margin-top: 15vh;
+}
+
+.panel-block {
+    position: relative;
+}
+
+.panel-block .fa-times {
+    display: none;
+}
+
+.panel-block:hover .fa-times {
+    color: #af5b5e;
+    display: block;
+    position: absolute;
+    right: 10px;
+}

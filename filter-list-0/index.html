@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filter Social Media List Exercise</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.2/css/bulma.css">
+    <style>
+        body {
+    height: 100vh;
+    }
+
+    #app {
+        margin-top: 15vh;
+    }
+
+    .panel-block {
+        position: relative;
+    }
+
+    .panel-block .fa-times {
+        display: none;
+    }
+
+    .panel-block:hover .fa-times {
+        color: #af5b5e;
+        display: block;
+        position: absolute;
+        right: 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="columns">
+        <nav class="panel column is-4 is-offset-4 has-text-centered">
+            <p class="panel-heading">
+                Social Media
+            </p>
+            <div class="panel-block">
+                <p class="control has-icons-left">
+                    <!-- Implement Dynamic Search Filtering -->
+                    <input class="input is-small" type="text" placeholder="Search">
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </p>
+            </div>
+            <!-- 
+                1) Add a loop on the <a> element, 
+                2) Bind the href value to the link property for each object in the array,
+            -->
+            <a class="panel-block" href="" target="_blank">
+                <span class="panel-icon">
+                    <!-- 
+                        For the <i> element directly below, 
+                        dynamically bind another class 'fa-{social-media-name}', 
+                        Hint: Need another class attribute    
+                    -->
+                    <i class="fa"></i>
+                </span>
+                    
+                    <!-- Social Media Name Interpolation Goes Here -->
+                    <!-- Implement a filter pipe to capitalize the name, define method in the Vue instance -->
+                <span class="panel-icon">
+                    <!-- Add click handler on <i> tag to remove item -->
+                    <i class="fa fa-times"></i>
+                </span>
+            </a>
+            <!-- End of <a> element to Loop -->
+        </nav>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        const app = new Vue({
+            data: {
+                search: '',
+                socialMediaList: [{
+                        name: "linkedin",
+                        link: "https://www.linkedin.com"
+                    },
+
+                    {
+                        name: "hacker-news",
+                        link: "https://news.ycombinator.com/"
+                    },
+                    {
+                        name: "meetup",
+                        link: "https://www.meetup.com/"
+                    },
+                    {
+                        name: "quora",
+                        link: "https://www.quora.com/"
+                    },
+                    {
+                        name: "facebook",
+                        link: "https://www.facebook.com/"
+                    },
+                    {
+                        name: "twitter",
+                        link: "https://twitter.com"
+                    },
+                    {
+                        name: "reddit",
+                        link: "https://www.reddit.com"
+                    }
+                ],
+                // Add a methods option and define a method to remove the item when the 'X' is clicked
+                // Add a filters option and define a method in your that capitalizes the first character in a string value
+                // Add an appropriate lifecyclehook to focus the search input when page loads and displays the element
+            }
+            
+        }).$mount('#app');
+    </script>
+</body>
+
+</html>

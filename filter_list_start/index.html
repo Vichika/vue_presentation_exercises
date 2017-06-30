@@ -42,7 +42,7 @@
             </p>
             <div class="panel-block">
                 <p class="control has-icons-left">
-                    <!-- Implement Dynamic Search Filtering, hint: two way data binding -->
+                    <!-- Implement Dynamic Search Filtering -->
                     <input class="input is-small" type="text" placeholder="Search">
                     <span class="icon is-small is-left">
                         <i class="fa fa-search"></i>
@@ -66,11 +66,7 @@
                     <!-- Social Media Name Interpolation Goes Here -->
                     <!-- Implement a filter pipe to capitalize the name, define method in the Vue instance -->
                 <span class="panel-icon">
-                    <!-- 
-                        Add click handler on <i> tag to remove item, becareful: since we're inside an <a> with a live href
-                        we'll need to figure out a way to prevent the default action, 
-                        hint: https://vuejs.org/v2/guide/events.html#Event-Modifiers
-                    -->
+                    <!-- Add click handler on <i> tag to remove item -->
                     <i class="fa fa-times"></i>
                 </span>
             </a>
@@ -112,13 +108,10 @@
                         link: "https://www.reddit.com"
                     }
                 ],
-                
-            } // end of data option
-
-            // Add a computed option for a filtered list with matching the search bar
-            // Add a methods option and define a method to remove the item when the 'X' is clicked
-            // Add a filters option and define a method in your that capitalizes the first character in a string value
-            // Add an appropriate lifecyclehook to focus the search input when page loads and displays the element
+                // Add a methods option and define a method to remove the item when the 'X' is clicked
+                // Add a filters option and define a method in your that capitalizes the first character in a string value
+                // Add an appropriate lifecyclehook to focus the search input when page loads and displays the element
+            }
             
         }).$mount('#app');
     </script>

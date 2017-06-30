@@ -9,26 +9,19 @@
         figure {
             display: inline-block;
         }
+        [v-cloak] {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <div class="search">
-            <h3>Search Gifs:</h3>
-            <!-- 
-                bind search input and event handler on input below
-                Note: the specific event we're looking for is when the
-                user is done typing in the input and hits 'enter'
-                refer to documentation - https://vuejs.org/v2/guide/events.html#Key-Modifiers
-            -->
-            <input type="text">
+            <h3>Search Gifs: {{ searchTerm }}</h3>
+            <input type="text" v-model='searchTerm' v-on:keyup.enter="getGiphys">
         </div>
-        <!--
-            Loop on the <figure>
-            bind the src attribute to the object's original image url
-        -->
-        <figure>
-            <img src="" width="300" height="250">
+        <figure v-for="gif in giphys" >
+            <img v-bind:src="gif.images.original.url" width="300" height="250">
         </figure>
     </div>
     <script src="https://unpkg.com/vue"></script>
